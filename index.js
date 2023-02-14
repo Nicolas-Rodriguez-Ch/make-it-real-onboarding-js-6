@@ -5,24 +5,21 @@ function hasValidPrice(product) {
     return true;
   }	
 
-  console.log(hasValidPrice({ "product": "Milk", price: 1.50 }));
-  console.log(hasValidPrice({ "product": "Cheese", price: -1 })	);
-  console.log(hasValidPrice());
+  //console.log(hasValidPrice({ "product": "Milk", price: 1.50 }));
+  //console.log(hasValidPrice({ "product": "Cheese", price: -1 })	);
+  //console.log(hasValidPrice());
 
 
   function flatten(arr) {
-    const result = [];
-    arr.forEach(element => {
-        result.push(...element);
-    });
-    return result;
+    arr = arr.reduce((element1, element2)=> element1.concat(element2), []);
+    return arr.map(item => Array.isArray(item)).includes(true) ? flatten(arr): arr;
   }
 
-//   console.log(flatten([[1, 2], [3, 4]]));
-//   console.log(flatten([[1], [2], [3], [4]]));
-//   console.log(flatten([["a", "b"], ["c", "d"]]));
-//   console.log(flatten([[true, false], [false, false]]));
-//   console.log(flatten([[true, false], [false, false], [[true]]]));
+console.log(flatten([[1, 2], [3, 4]]));
+console.log(flatten([[1], [2], [3], [4]]));
+console.log(flatten([["a", "b"], ["c", "d"]]));
+console.log(flatten([[true, false], [false, false]]));
+console.log(flatten([[true, false], [false, false], [[true]]]));
 
   function clone(arr) {
     // const newArr = [];
